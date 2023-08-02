@@ -36,6 +36,12 @@ include 'components/wishlist_cart.php';
 <section class="products">
 
    <h1 class="heading">Phân Loại</h1>
+   <div class="filter-price">
+      <span>100 VNĐ</span>
+      <input type="range" id="priceRange" name="priceRange" min="100" max="10000" step="100" value="10000">
+      <span id="priceLabel">10,000 VNĐ</span>
+   </div>
+   <button id="filterButton" style="text-aline=center">Lọc</button>
    <div class="filter">
       <span>Loại Sản Phẩm</span>
       <li><a href="category.php?category=giày">Giày</a></li>
@@ -48,9 +54,6 @@ include 'components/wishlist_cart.php';
       <li><a href="category.php?category=Nam">Nam</a></li>
       <li><a href="category.php?category=Nữ">Nữ</a></li>
       <li><a href="category.php?category=Trẻ con">Trẻ Con</a></li>
-      <span>Giá</span>
-      <li><a href="category.php?category=price_greater_than_5000">lớn hơn 5000</a></li>
-      <li><a href="category.php?category=price_less_than_5000">nhỏ hơn 5000</a></li>
       <span>Thương Hiệu</span>
       <li><a href="category.php?category=lv">LOUIS VUITTON</a></li>
       <li><a href="category.php?category=gucci">GUCCI</a></li>
@@ -64,19 +67,15 @@ include 'components/wishlist_cart.php';
    <div class="box-container">
 
    <?php
-     $category = $_GET['category'];
-     $select_products = $conn->prepare("SELECT * FROM `products` WHERE name LIKE '%{$category}%'"); 
-      if ($category === 'price_greater_than_5000') {
-      $select_products = $conn->prepare("SELECT * FROM `products` WHERE price > 5000");
-      } else {
-         $select_products = $conn->prepare("SELECT * FROM `products` WHERE name LIKE '%$category%'");
-      }
-      if ($category === 'price_less_than_5000') {
-         $select_products = $conn->prepare("SELECT * FROM `products` WHERE price < 5000");
-      } else {
-         $select_products = $conn->prepare("SELECT * FROM `products` WHERE name LIKE '%$category%'");
-      }
-     $select_products->execute();
+         $category = $_GET['category'];
+         $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : 100;
+         $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : 10000;
+         
+         $select_products = $conn->prepare("SELECT * FROM `products` WHERE name LIKE :category AND price BETWEEN :minPrice AND :maxPrice"); 
+         $select_products->bindValue(':category', '%' . $category . '%', PDO::PARAM_STR);
+         $select_products->bindParam(':minPrice', $minPrice, PDO::PARAM_INT);
+         $select_products->bindParam(':maxPrice', $maxPrice, PDO::PARAM_INT);
+         $select_products->execute();
      if($select_products->rowCount() > 0){
       while($fetch_product = $select_products->fetch(PDO::FETCH_ASSOC)){
    ?>
@@ -103,18 +102,26 @@ include 'components/wishlist_cart.php';
    ?>
 
    </div>
+   <script>
+    const priceRange = document.getElementById('priceRange');
+    const priceLabel = document.getElementById('priceLabel');
+    const filterButton = document.getElementById('filterButton');
+
+    priceRange.addEventListener('input', () => {
+        const selectedPrice = priceRange.value;
+        priceLabel.innerText =selectedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " VNĐ";
+    });
+
+    filterButton.addEventListener('click', () => {
+        const minPrice = 100; // Minimum price
+        const maxPrice = priceRange.value;
+        const newUrl = window.location.pathname + '?category=<?= urlencode($category) ?>&minPrice=' + minPrice + '&maxPrice=' + maxPrice;
+        window.location.href = newUrl;
+    });
+</script>
+
 
 </section>
-
-
-
-
-
-
-
-
-
-
 
 
 

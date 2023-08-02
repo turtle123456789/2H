@@ -169,7 +169,9 @@ section{
    right: 0;
    border-top: var(--border);
 }
-
+::-webkit-scrollbar-thumb {
+   background-color: #ffffff; /* Màu sắc của phần cần kéo */
+ }
 .header .navbar2 ul{
     margin:0 1rem;
 }
@@ -238,7 +240,6 @@ section{
    display: none;
    animation:fadeIn .2s linear;
 }
-
 .header .flex .profile.active{
    display: inline-block;
 }
@@ -249,7 +250,15 @@ section{
    font-size: 2rem;
    margin-bottom: 1rem;
 }
+.products .filter-price
+{
+   display: flex;
+   justify-content: center;
+   align-items: flex-end;
+}
+.filter-price #priceRange{
 
+}
 #menu-btn{
    display: none;
 }
@@ -519,11 +528,15 @@ section{
 }  
 .products{
    position: relative;
+   text-align: center;
 }
 .products .filter{
    position: fixed;
    left: 0;
    background-color: var(--white);
+   overflow: scroll;
+   max-height: 300px;
+   box-shadow: var(--box-shadow  );
 }
 .products .filter span{
    font-size: 2rem;
@@ -545,7 +558,10 @@ section{
    justify-content: center;
    align-items: flex-start;
 }
-
+.products #filterButton{
+   cursor: pointer
+   var(--black);
+}
 .products .box-container .box{
    position: relative;
    background-color: var(--white);

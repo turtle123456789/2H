@@ -36,6 +36,13 @@ include 'components/wishlist_cart.php';
 <section class="products">
 
    <h1 class="heading">Danh Mục Sản Phẩm</h1>
+   <div class="filter-price">
+      <span>Giá: <span class="min-price">100 VNĐ</span></span>
+      <input type="range" id="priceRange" name="priceRange" min="100" max="10000" step="100" value="100">
+      <span id="priceLabel" class="max-price">10,000 VNĐ</span>
+   </div>
+   <button id="filterButton">Lọc</button>
+
    <div class="filter">
       <span>Loại Sản Phẩm</span>
       <li><a href="category.php?category=giày">Giày</a></li>
@@ -91,7 +98,6 @@ include 'components/wishlist_cart.php';
       ?>
 
    </div>
-
 </section>
 
 <?php include 'components/footer.php'; ?>
