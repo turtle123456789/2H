@@ -312,6 +312,7 @@ section{
    text-transform: uppercase;
 }
 
+
 .home-bg .home .slide .content .btn{
    display: inline-block;
    width: auto;
@@ -379,6 +380,12 @@ section{
 .home-products .slide .name{
    font-size: 2rem;
    color:var(--black);
+}
+
+.home-products .slide .quantity{
+   font-size: 2rem;
+   color:var(--orange);
+   
 }
 
 .home-products .slide .flex{
@@ -499,6 +506,14 @@ section{
 
 .quick-view form .row .content{
    flex:1 1 40rem;
+}
+
+.quick-view form .row .content .brand {
+   font-size: 2rem;
+   color:var(--black);
+   text-transform: uppercase;
+   font-weight: 800;
+   margin-bottom: 1rem;
 }
 
 .quick-view form .row .content .name{

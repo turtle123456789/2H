@@ -41,11 +41,34 @@ include 'components/wishlist_cart.php';
       <input type="range" id="priceRange" name="priceRange" min="0" max="100000" step="1" value="50000">
       <span id="priceLabel">100.000 $</span>
    </div>
-   <button id="filterButton">Lọc</button>
+   <button id="filterButton" style="text-aline=center">Lọc</button>
+   <div class="filter">
+      <span>Loại Sản Phẩm</span>
+      <li><a href="category.php?category=giày">Giày</a></li>
+      <li><a href="category.php?category=kính">Kính</a></li>
+      <li><a href="category.php?category=áo">Áo</a></li>
+      <li><a href="category.php?category=đồng hồ">Đồng Hồ</a></li>
+      <li><a href="category.php?category=túi sách">Túi Sách</a></li>
+      <li><a href="category.php?category=phụ kiện">Phụ Kiện</a></li>
+      <span>Giới Tính</span>
+      <li><a href="category.php?category=Nam">Nam</a></li>
+      <li><a href="category.php?category=Nữ">Nữ</a></li>
+      <li><a href="category.php?category=Trẻ con">Trẻ Con</a></li>
+      <span>Thương Hiệu</span>
+      <li><a href="category.php?category=lv">LOUIS VUITTON</a></li>
+      <li><a href="category.php?category=gucci">GUCCI</a></li>
+      <li><a href="category.php?category=burberry">BURBERRY</a></li>
+      <li><a href="category.php?category=hermes">HERMES</a></li>
+      <li><a href="category.php?category=chanel">CHANEL</a></li>
+      <li><a href="category.php?category=dior">DIOR</a></li>
+      <li><a href="category.php?category=balenciaga">BALENCIAGA</a></li>
+      <li><a href="category.php?category=rolex">ROLEX</a></li>
+   </div>
    <div class="box-container">
 
    <?php
          $category = $_GET['category'];
+<<<<<<< HEAD
          $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : 0;
          $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : 100000;
          
@@ -53,6 +76,10 @@ include 'components/wishlist_cart.php';
          $select_products->bindValue(':category', '%' . $category . '%', PDO::PARAM_STR);
          $select_products->bindParam(':minPrice', $minPrice, PDO::PARAM_INT);
          $select_products->bindParam(':maxPrice', $maxPrice, PDO::PARAM_INT);
+=======
+         $select_products = $conn->prepare("SELECT * FROM `products` WHERE tag LIKE '%$category%'"); 
+
+>>>>>>> 188cdd13b48186f03238f0b5f1d5c04998aac91d
          $select_products->execute();
      if($select_products->rowCount() > 0){
       while($fetch_product = $select_products->fetch(PDO::FETCH_ASSOC)){
@@ -67,7 +94,11 @@ include 'components/wishlist_cart.php';
       <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_product['name']; ?></div>
       <div class="flex">
+<<<<<<< HEAD
          <div class="price"><?=number_format($fetch_product['price'],0,".",",") ; ?><span>$</span></div>
+=======
+         <div class="price"><?= $fetch_product['price']; ?><span>$</span></div>
+>>>>>>> 188cdd13b48186f03238f0b5f1d5c04998aac91d
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <input type="submit" value="Thêm Vào Giỏ Hàng" class="btn" name="add_to_cart">

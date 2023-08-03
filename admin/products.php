@@ -14,11 +14,22 @@ if(isset($_POST['add_product'])){
 
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $brand = $_POST['brand'];
+   $brand = filter_var($brand, FILTER_SANITIZE_STRING);
+   $origin = $_POST['origin'];
+   $origin = filter_var($origin, FILTER_SANITIZE_STRING);
+   $quantity = $_POST['quantity'];
+   $quantity = filter_var($quantity, FILTER_SANITIZE_STRING);
+   $price = $_POST['quantity'];
+   $price = filter_var($quantity, FILTER_SANITIZE_STRING);
    $price = $_POST['price'];
    $price = filter_var($price, FILTER_SANITIZE_STRING);
+   $original_price = $_POST['original_price'];
+   $original_price = filter_var($price, FILTER_SANITIZE_STRING);
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
-
+   $tag = $_POST['tag'];
+   $tag = filter_var($tag, FILTER_SANITIZE_STRING);
    $image_01 = $_FILES['image_01']['name'];
    $image_01 = filter_var($image_01, FILTER_SANITIZE_STRING);
    $image_size_01 = $_FILES['image_01']['size'];
@@ -44,8 +55,8 @@ if(isset($_POST['add_product'])){
       $message[] = 'product name already exist!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01, image_02, image_03) VALUES(?,?,?,?,?,?)");
-      $insert_products->execute([$name, $details, $price, $image_01, $image_02, $image_03]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, quantity, original_price, origin, tag, price, brand, image_01, image_02, image_03) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+      $insert_products->execute([$name, $details, $quantity, $original_price, $origin, $tag, $price, $brand, $image_01, $image_02, $image_03]);
 
       if($insert_products){
          if($image_size_01 > 2000000 OR $image_size_02 > 2000000 OR $image_size_03 > 2000000){
@@ -112,10 +123,26 @@ if(isset($_GET['delete'])){
             <input type="text" class="box" required maxlength="100" placeholder="Nhập Tên Sản Phẩm" name="name">
          </div>
          <div class="inputBox">
+            <span>Thương hiệu (required)</span>
+            <input type="text" class="box" required maxlength="100" placeholder="Nhập Tên Thương Hiệu" name="brand">
+         </div>
+         <div class="inputBox">
+            <span>Xuất xứ (required)</span>
+            <input type="text" class="box" required maxlength="100" placeholder="Nhập Nơi Xuất Xứ" name="origin">
+         </div>
+         <div class="inputBox">
+            <span>Số lượng (required)</span>
+            <input type="number" min="0" class="box" required max="10000" placeholder="Nhập Số lượng" onkeypress="if(this.value.length == 10) return false;" name="quantity">
+         </div>
+         <div class="inputBox">
             <span>Giá Sản Phẩm (required)</span>
             <input type="decimal" min="0" class="box" required max="9999999999" placeholder="Nhập Giá Sản Phẩm" onkeypress="if(this.value.length == 10) return false;" name="price">
          </div>
-        <div class="inputBox">
+         <div class="inputBox">
+            <span>Giá Ban Đầu (required)</span>
+            <input type="number" min="0" class="box" required max="9999999999" placeholder="Nhập Giá Ban Đầu" onkeypress="if(this.value.length == 10) return false;" name="original_price">
+         </div>
+         <div class="inputBox">
             <span>Hình 1 (required)</span>
             <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
         </div>
@@ -130,6 +157,10 @@ if(isset($_GET['delete'])){
          <div class="inputBox">
             <span>Mô Tả Sản Phẩm (required)</span>
             <textarea name="details" placeholder="Nội dung..." class="box" required maxlength="500" cols="30" rows="10"></textarea>
+         </div>
+         <div class="inputBox">
+            <span>Tag (required)</span>
+            <textarea name="details" placeholder="Relevant Tag" class="box" required maxlength="500" cols="30" rows="10"></textarea>
          </div>
       </div>
       
@@ -153,7 +184,7 @@ if(isset($_GET['delete'])){
    <div class="box">
       <img src="../uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
-      <div class="price">$<span><?= $fetch_products['price']; ?></span>/-</div>
+      <div class="price"><span><?= $fetch_products['price']; ?></span>VND</div>
       <div class="details"><span><?= $fetch_products['details']; ?></span></div>
       <div class="flex-btn">
          <a href="update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">Cập Nhập</a>

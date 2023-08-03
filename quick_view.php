@@ -20,7 +20,7 @@ include 'components/wishlist_cart.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>quick view</title>
+   <title>Mô tả</title>
    
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -35,7 +35,7 @@ include 'components/wishlist_cart.php';
 
 <section class="quick-view">
 
-   <h1 class="heading">quick view</h1>
+   <h1 class="heading">Mô tả</h1>
 
    <?php
      $pid = $_GET['pid'];
@@ -46,6 +46,7 @@ include 'components/wishlist_cart.php';
    ?>
    <form action="" method="post" class="box">
       <input type="hidden" name="pid" value="<?= $fetch_product['id']; ?>">
+      <input type="hidden" name="brand" value="<?= $fetch_product['brand']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
@@ -61,10 +62,11 @@ include 'components/wishlist_cart.php';
             </div>
          </div>
          <div class="content">
+            <div class="brand"><?= $fetch_product['brand']; ?></div>
             <div class="name"><?= $fetch_product['name']; ?></div>
             <div class="flex">
-               <div class="price"><?= $fetch_product['price']; ?><span>$</span></div>
-               <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
+               <div class="price"><?= $fetch_product['price']; ?><span> VND</span></div>
+               <input type="number" name="qty" class="qty" min="1" max="<?=$fetch_product['quantity']; ?>" onkeypress="if(this.value.length == 2) return false;" value="1">
             </div>
             <div class="details"><?= $fetch_product['details']; ?></div>
             <div class="flex-btn">

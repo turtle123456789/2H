@@ -25,7 +25,7 @@ if(isset($_GET['delete'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>admin accounts</title>
+   <title>Tài khoản Admin</title>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -38,13 +38,13 @@ if(isset($_GET['delete'])){
 
 <section class="accounts">
 
-   <h1 class="heading">admin accounts</h1>
+   <h1 class="heading">Tài khoản Admin</h1>
 
    <div class="box-container">
 
    <div class="box">
-      <p>add new admin</p>
-      <a href="register_admin.php" class="option-btn">register admin</a>
+      <p>Thêm tài khoản admin mới</p>
+      <a href="register_admin.php" class="option-btn">Đăng ký admin mới</a>
    </div>
 
    <?php
@@ -54,8 +54,8 @@ if(isset($_GET['delete'])){
          while($fetch_accounts = $select_accounts->fetch(PDO::FETCH_ASSOC)){   
    ?>
    <div class="box">
-      <p> admin id : <span><?= $fetch_accounts['id']; ?></span> </p>
-      <p> admin name : <span><?= $fetch_accounts['name']; ?></span> </p>
+      <p>Admin id : <span><?= $fetch_accounts['id']; ?></span> </p>
+      <p>Admin name : <span><?= $fetch_accounts['name']; ?></span> </p>
       <div class="flex-btn">
          <a href="admin_accounts.php?delete=<?= $fetch_accounts['id']; ?>" onclick="return confirm('delete this account?')" class="delete-btn">delete</a>
          <?php

@@ -96,7 +96,7 @@ include 'components/wishlist_cart.php';
 
    <a href="category.php?category=lv" class="swiper-slide slide">
       <img src="images/icon-1.png" alt="">
-      <h3>LOUIS VUITTON</h3>
+      <h3>LV</h3>
    </a>
 
    <a href="category.php?category=gucci" class="swiper-slide slide">
@@ -158,16 +158,23 @@ include 'components/wishlist_cart.php';
    ?>
    <form action="" method="post" class="swiper-slide slide">
       <input type="hidden" name="pid" value="<?= $fetch_product['id']; ?>">
+      <input type="hidden" name="quantity" value="<?= $fetch_product['quantity']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
       <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
       <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>
-      <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
+      <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>"><img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt=""></a>
       <div class="name"><?= $fetch_product['name']; ?></div>
+      <div class="quantity">Hiện có: <?= $fetch_product['quantity']; ?></div>
       <div class="flex">
+<<<<<<< HEAD
          <div class="price"><?= number_format($fetch_product['price'], 0, ".", ","); ?><span>$</span></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
+=======
+         <div class="price"><?=$fetch_product['price']; ?></div>
+         <input type="number" name="qty" class="qty" min="1" max="<?=$fetch_product['quantity']; ?>" onkeypress="if(this.value.length == 2) return false;" value="1">
+>>>>>>> 188cdd13b48186f03238f0b5f1d5c04998aac91d
       </div>
       <input type="submit" value="Thêm vào giỏ hàng" class="btn" name="add_to_cart">
    </form>
@@ -197,6 +204,13 @@ include 'components/wishlist_cart.php';
 <?php include 'components/footer.php'; ?>
 
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/currency.js@~2.0.0/dist/currency.min.js"></script>
+
+<script>
+   document.getElementsByClassName('price').innerHTML = "72000";
+   var price = 
+   console.log
+</script>
 
 <script src="js/script.js"></script>
 
