@@ -20,8 +20,6 @@ if(isset($_POST['add_product'])){
    $origin = filter_var($origin, FILTER_SANITIZE_STRING);
    $quantity = $_POST['quantity'];
    $quantity = filter_var($quantity, FILTER_SANITIZE_STRING);
-   $price = $_POST['quantity'];
-   $price = filter_var($quantity, FILTER_SANITIZE_STRING);
    $price = $_POST['price'];
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $original_price = $_POST['original_price'];

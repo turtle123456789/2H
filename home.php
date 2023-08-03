@@ -168,7 +168,7 @@ include 'components/wishlist_cart.php';
       <div class="name"><?= $fetch_product['name']; ?></div>
       <div class="quantity">Hiện có: <?= $fetch_product['quantity']; ?></div>
       <div class="flex">
-         <div class="price"><?=$fetch_product['price']; ?></div>
+         <div class="price"><?=$fetch_product['price']; ?><span>VND</span></div>
          <input type="number" name="qty" class="qty" min="1" max="<?=$fetch_product['quantity']; ?>" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <input type="submit" value="Thêm vào giỏ hàng" class="btn" name="add_to_cart">
@@ -201,11 +201,6 @@ include 'components/wishlist_cart.php';
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/currency.js@~2.0.0/dist/currency.min.js"></script>
 
-<script>
-   document.getElementsByClassName('price').innerHTML = "72000";
-   var price = 
-   console.log
-</script>
 
 <script src="js/script.js"></script>
 

@@ -11,7 +11,7 @@ if(!isset($admin_id)){
 }
 
 if(isset($_POST['update'])){
-
+   
    $pid = $_POST['pid'];
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
