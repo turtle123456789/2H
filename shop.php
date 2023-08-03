@@ -44,10 +44,10 @@ include 'components/wishlist_cart.php';
    <button id="filterButton" style="text-aline=center">Lọc</button>
    <div class="box-container">
       <?php
-      $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : 0;
-      $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : 100000;
-      $select_products->bindParam(':minPrice', $minPrice, PDO::PARAM_INT);
-      $select_products->bindParam(':maxPrice', $maxPrice, PDO::PARAM_INT);
+      // $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : 0;
+      // $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : 100000;
+      // $select_products->bindParam(':minPrice', $minPrice, PDO::PARAM_INT);
+      // $select_products->bindParam(':maxPrice', $maxPrice, PDO::PARAM_INT);
       $select_products = $conn->prepare("SELECT * FROM `products`"); 
       $select_products->execute();
       if($select_products->rowCount() > 0){
