@@ -35,10 +35,10 @@ include 'components/wishlist_cart.php';
 
 <section class="products">
 
-   <h1 class="heading">Phân Loại</h1>
+   <h1 class="heading">Danh Mục Sản Phẩm</h1>
    <div class="filter-price">
       <span>100 VNĐ</span>
-      <input type="range" id="priceRange" name="priceRange" min="100" max="10000" step="100" value="10000">
+      <input type="range" id="priceRange" name="priceRange" min="100" max="1000000" step="100" value="1000000">
       <span id="priceLabel">10,000 VNĐ</span>
    </div>
    <button id="filterButton" style="text-aline=center">Lọc</button>
@@ -55,7 +55,7 @@ include 'components/wishlist_cart.php';
       <li><a href="category.php?category=Nữ">Nữ</a></li>
       <li><a href="category.php?category=Trẻ con">Trẻ Con</a></li>
       <span>Thương Hiệu</span>
-      <li><a href="category.php?category=louis vuitton">LOUIS VUITTON</a></li>
+      <li><a href="category.php?category=lv">LOUIS VUITTON</a></li>
       <li><a href="category.php?category=gucci">GUCCI</a></li>
       <li><a href="category.php?category=burberry">BURBERRY</a></li>
       <li><a href="category.php?category=hermes">HERMES</a></li>
@@ -84,15 +84,15 @@ include 'components/wishlist_cart.php';
       <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_product['name']; ?></div>
       <div class="flex">
-         <div class="price"><?= $fetch_product['price']; ?><span> VND</span></div>
-         <input type="number" name="qty" class="qty" min="1" max="<?=$fetch_product['quantity']; ?>" onkeypress="if(this.value.length == 2) return false;" value="1">
+         <div class="price"><?= $fetch_product['price']; ?><span>$</span></div>
+         <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart">
+      <input type="submit" value="Thêm Vào Giỏ Hàng" class="btn" name="add_to_cart">
    </form>
    <?php
       }
    }else{
-      echo '<p class="empty">no products found!</p>';
+      echo '<p class="empty">Không Có Sản Phẩm</p>';
    }
    ?>
 

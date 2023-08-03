@@ -160,7 +160,7 @@ section{
 .header .navbar2
 {
    background-color: var(--light-bg);
-   display: none;
+   display: flex;
    align-items: flex-start;
    justify-content: space-between;
    position: absolute;
@@ -168,10 +168,17 @@ section{
    left: 0;
    right: 0;
    border-top: var(--border);
+   transform: rotateY(90deg);
 }
-::-webkit-scrollbar-thumb {
-   background-color: #ffffff; /* Màu sắc của phần cần kéo */
- }
+/* Hiển thị khi có class "show" */
+#navbar2.show {
+   transform: rotateY(0);
+   transition: transform 1s ease;
+}
+#navbar2.hidden{
+   transform: rotateY(90deg);
+   transition: transform 1s ease;
+}
 .header .navbar2 ul{
     margin:0 1rem;
 }
@@ -545,27 +552,6 @@ section{
    position: relative;
    text-align: center;
 }
-.products .filter{
-   position: fixed;
-   left: 0;
-   background-color: var(--white);
-   overflow: scroll;
-   max-height: 300px;
-   box-shadow: var(--box-shadow  );
-}
-.products .filter span{
-   font-size: 2rem;
-}
-.products .filter li{
-   list-style: none;
-}
-.products .filter li a{
-   font-size: 1.5rem;
-   color: var(--black);
-}
-.products .filter li a:hover{
-   color: var(--main-color);
-}
 .products .box-container{
    display: grid;
    grid-template-columns: repeat(auto-fit, 33rem);
@@ -575,7 +561,6 @@ section{
 }
 .products #filterButton{
    cursor: pointer
-   var(--black);
 }
 .products .box-container .box{
    position: relative;

@@ -218,6 +218,10 @@ var swiper = new Swiper(".home-slider", {
       el: ".swiper-pagination",
       clickable:true,
     },
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+   },
 });
 
  var swiper = new Swiper(".category-slider", {
@@ -226,6 +230,10 @@ var swiper = new Swiper(".home-slider", {
    pagination: {
       el: ".swiper-pagination",
       clickable:true,
+   },
+   autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
    },
    breakpoints: {
       0: {
