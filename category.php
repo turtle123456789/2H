@@ -37,9 +37,9 @@ include 'components/wishlist_cart.php';
 
    <h1 class="heading">Danh Mục Sản Phẩm</h1>
    <div class="filter-price">
-      <span>100 VNĐ</span>
-      <input type="range" id="priceRange" name="priceRange" min="100" max="1000000" step="100" value="1000000">
-      <span id="priceLabel">10,000 VNĐ</span>
+      <span>0 $</span>
+      <input type="range" id="priceRange" name="priceRange" min="0" max="100000" step="1" value="50000">
+      <span id="priceLabel">100.000 $</span>
    </div>
    <button id="filterButton" style="text-aline=center">Lọc</button>
    <div class="filter">
@@ -68,8 +68,18 @@ include 'components/wishlist_cart.php';
 
    <?php
          $category = $_GET['category'];
+<<<<<<< HEAD
+         $minPrice = isset($_GET['minPrice']) ? (int)$_GET['minPrice'] : 0;
+         $maxPrice = isset($_GET['maxPrice']) ? (int)$_GET['maxPrice'] : 100000;
+         
+         $select_products = $conn->prepare("SELECT * FROM `products` WHERE name LIKE :category AND price BETWEEN :minPrice AND :maxPrice"); 
+         $select_products->bindValue(':category', '%' . $category . '%', PDO::PARAM_STR);
+         $select_products->bindParam(':minPrice', $minPrice, PDO::PARAM_INT);
+         $select_products->bindParam(':maxPrice', $maxPrice, PDO::PARAM_INT);
+=======
          $select_products = $conn->prepare("SELECT * FROM `products` WHERE tag LIKE '%$category%'"); 
 
+>>>>>>> 188cdd13b48186f03238f0b5f1d5c04998aac91d
          $select_products->execute();
      if($select_products->rowCount() > 0){
       while($fetch_product = $select_products->fetch(PDO::FETCH_ASSOC)){
@@ -84,7 +94,11 @@ include 'components/wishlist_cart.php';
       <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_product['name']; ?></div>
       <div class="flex">
+<<<<<<< HEAD
+         <div class="price"><?=number_format($fetch_product['price'],0,".",",") ; ?><span>$</span></div>
+=======
          <div class="price"><?= $fetch_product['price']; ?><span>$</span></div>
+>>>>>>> 188cdd13b48186f03238f0b5f1d5c04998aac91d
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <input type="submit" value="Thêm Vào Giỏ Hàng" class="btn" name="add_to_cart">
@@ -104,11 +118,11 @@ include 'components/wishlist_cart.php';
 
     priceRange.addEventListener('input', () => {
         const selectedPrice = priceRange.value;
-        priceLabel.innerText =selectedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " VNĐ";
+        priceLabel.innerText =selectedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " $";
     });
 
     filterButton.addEventListener('click', () => {
-        const minPrice = 100; // Minimum price
+        const minPrice = 0; // Minimum price
         const maxPrice = priceRange.value;
         const newUrl = window.location.pathname + '?category=<?= urlencode($category) ?>&minPrice=' + minPrice + '&maxPrice=' + maxPrice;
         window.location.href = newUrl;

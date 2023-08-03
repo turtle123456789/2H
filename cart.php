@@ -70,12 +70,12 @@ if(isset($_POST['update_qty'])){
       <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
       <div class="name"><?= $fetch_cart['name']; ?></div>
       <div class="flex">
-         <div class="price">$<?= $fetch_cart['price']; ?>/-</div>
+         <div class="price"><?= number_format($fetch_cart['price'], 0, ".", ","); ?>$</div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="<?= $fetch_cart['quantity']; ?>">
          <button type="submit" class="fas fa-edit" name="update_qty"></button>
       </div>
-      <div class="sub-total"> sub total : <span>$<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</span> </div>
-      <input type="submit" value="delete item" onclick="return confirm('Bạn Muốn Xóa Sản Phẩm Này  ?');" class="delete-btn" name="delete">
+      <div class="sub-total">Tổng Tiền : <span><?=number_format($sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']), 0, ".", ","); ?>$</span> </div>
+      <input type="submit" value="Xóa Sản Phẩm" onclick="return confirm('Bạn Muốn Xóa Sản Phẩm Này  ?');" class="delete-btn" name="delete">
    </form>
    <?php
    $grand_total += $sub_total;
@@ -87,9 +87,9 @@ if(isset($_POST['update_qty'])){
    </div>
 
    <div class="cart-total">
-      <p>Tổng Tiền : <span><?= $grand_total; ?>VNĐ</span></p>
+      <p>Tổng Tiền :<?= number_format($grand_total, 0, ".", ","); ?>$</span></p>
       <a href="shop.php" class="option-btn">Tiếp Tục Mua Hàng</a>
-      <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">Xóa Tất Cả Sản Phẩm</a>
+      <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('Bạn Muốn Xóa Tất Cả Sản Phẩm?');">Xóa Tất Cả Sản Phẩm</a>
       <a href="checkout.php" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>">Tiến Hành Kiểm Tra</a>
    </div>
 

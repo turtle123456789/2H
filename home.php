@@ -96,7 +96,7 @@ include 'components/wishlist_cart.php';
 
    <a href="category.php?category=lv" class="swiper-slide slide">
       <img src="images/icon-1.png" alt="">
-      <h3>LV</h3>
+      <h3>LOUIS VUITTON</h3>
    </a>
 
    <a href="category.php?category=gucci" class="swiper-slide slide">
@@ -158,15 +158,13 @@ include 'components/wishlist_cart.php';
    ?>
    <form action="" method="post" class="swiper-slide slide">
       <input type="hidden" name="pid" value="<?= $fetch_product['id']; ?>">
-      <input type="hidden" name="quantity" value="<?= $fetch_product['quantity']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
       <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
       <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>
-      <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>"><img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt=""></a>
+      <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_product['name']; ?></div>
-      <div class="quantity">Hiện có: <?= $fetch_product['quantity']; ?></div>
       <div class="flex">
          <div class="price"><?=$fetch_product['price']; ?><span>VND</span></div>
          <input type="number" name="qty" class="qty" min="1" max="<?=$fetch_product['quantity']; ?>" onkeypress="if(this.value.length == 2) return false;" value="1">
@@ -199,8 +197,6 @@ include 'components/wishlist_cart.php';
 <?php include 'components/footer.php'; ?>
 
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script src="https://unpkg.com/currency.js@~2.0.0/dist/currency.min.js"></script>
-
 
 <script src="js/script.js"></script>
 
@@ -208,6 +204,7 @@ include 'components/wishlist_cart.php';
 
 var swiper = new Swiper(".home-slider", {
    loop:true,
+   speed: 1000,
    spaceBetween: 20,
    pagination: {
       el: ".swiper-pagination",
@@ -221,6 +218,7 @@ var swiper = new Swiper(".home-slider", {
 
  var swiper = new Swiper(".category-slider", {
    loop:true,
+   speed: 1000,
    spaceBetween: 20,
    pagination: {
       el: ".swiper-pagination",

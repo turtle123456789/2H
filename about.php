@@ -44,7 +44,7 @@ if(isset($_SESSION['user_id'])){
       <div class="content">
          <h3>Tại Sao Lại Chọn Chúng Tôi?</h3>
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam veritatis minus et similique doloribus? Harum molestias tenetur eaque illum quas? Obcaecati nulla in itaque modi magnam ipsa molestiae ullam consequuntur.</p>
-         <a href="contact.php" class="btn">contact us</a>
+         <a href="contact.php" class="btn">Liên Hệ</a>
       </div>
 
    </div>
