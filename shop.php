@@ -37,37 +37,11 @@ include 'components/wishlist_cart.php';
 
    <h1 class="heading">Danh Mục Sản Phẩm</h1>
    <div class="filter-price">
-      <span>Giá: <span class="min-price">100 VNĐ</span></span>
-      <input type="range" id="priceRange" name="priceRange" min="100" max="10000" step="100" value="100">
-      <span id="priceLabel" class="max-price">10,000 VNĐ</span>
+      <span>100 VNĐ</span>
+      <input type="range" id="priceRange" name="priceRange" min="100" max="10000" step="100" value="10000">
+      <span id="priceLabel">10,000 VNĐ</span>
    </div>
-   <button id="filterButton">Lọc</button>
-
-   <div class="filter">
-      <span>Loại Sản Phẩm</span>
-      <li><a href="category.php?category=giày">Giày</a></li>
-      <li><a href="category.php?category=kính">Kính</a></li>
-      <li><a href="category.php?category=áo">Áo</a></li>
-      <li><a href="category.php?category=đồng hồ">Đồng Hồ</a></li>
-      <li><a href="category.php?category=túi sách">Túi Sách</a></li>
-      <li><a href="category.php?category=phụ kiện">Phụ Kiện</a></li>
-      <span>Giới Tính</span>
-      <li><a href="category.php?category=Nam">Nam</a></li>
-      <li><a href="category.php?category=Nữ">Nữ</a></li>
-      <li><a href="category.php?category=Trẻ con">Trẻ Con</a></li>
-      <span>Giá</span>
-      <li><a href="category.php?category>=5000">lớn hơn 5000</a></li>
-      <li><a href="category.php?category<=5000">nhỏ hơn 5000</a></li>
-      <span>Thương Hiệu</span>
-      <li><a href="category.php?category=lv">LOUIS VUITTON</a></li>
-      <li><a href="category.php?category=gucci">GUCCI</a></li>
-      <li><a href="category.php?category=burberry">BURBERRY</a></li>
-      <li><a href="category.php?category=hermes">HERMES</a></li>
-      <li><a href="category.php?category=chanel">CHANEL</a></li>
-      <li><a href="category.php?category=dior">DIOR</a></li>
-      <li><a href="category.php?category=balenciaga">BALENCIAGA</a></li>
-      <li><a href="category.php?category=rolex">ROLEX</a></li>
-   </div>
+   <button id="filterButton" style="text-aline=center">Lọc</button>
    <div class="box-container">
       <?php
       $select_products = $conn->prepare("SELECT * FROM `products`"); 
@@ -98,6 +72,17 @@ include 'components/wishlist_cart.php';
       ?>
 
    </div>
+   <script>
+   const priceRange = document.getElementById('priceRange');
+   const priceLabel = document.getElementById('priceLabel');
+
+   priceRange.addEventListener('input', () => {
+      const selectedPrice = priceRange.value;
+      priceLabel.innerText = selectedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " VNĐ";
+   }
+   );
+
+</script>
 </section>
 
 <?php include 'components/footer.php'; ?>

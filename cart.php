@@ -53,9 +53,7 @@ if(isset($_POST['update_qty'])){
    
 <?php include 'components/user_header.php'; ?>
 
-<section class="products shopping-cart">
-
-   <h3 class="heading">shopping cart</h3>
+<section class="products shopping-cart">Giỏ Hàng</h3>
 
    <div class="box-container">
 
@@ -90,8 +88,8 @@ if(isset($_POST['update_qty'])){
 
    <div class="cart-total">
       <p>grand total : <span>$<?= $grand_total; ?>/-</span></p>
-      <a href="shop.php" class="option-btn">continue shopping</a>
-      <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">delete all item</a>
+      <a href="shop.php" class="option-btn">Tiếp Tục Mua Hàng</a>
+      <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">Xóa Tất Cả Sản Phẩm</a>
       <a href="checkout.php" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>">proceed to checkout</a>
    </div>
 

@@ -21,7 +21,7 @@
          <a href="home.php"onmouseover="hideNavbar2()">Trang Chủ</a>
          <a href="about.php"onmouseover="hideNavbar2()">Giới Thiệu</a>
          <a href="orders.php"onmouseover="hideNavbar2()">Đơn Hàng</a>
-         <a href="shop.php" class="link-navbar2" onmouseover="showNavbar2()">Sản Phẩm</a>
+         <a href="shop.php" class="link-navbar2" onmouseover="showNavbar2()" >Sản Phẩm</a>
          <a href="contact.php"onmouseover="hideNavbar2()">Liên Hệ</a>
       </nav>
 
@@ -123,12 +123,13 @@
       const linkNavbar2 = document.querySelector('.link-navbar2');
       const navbar2 = document.getElementById('navbar2');
       function showNavbar2() {
-         navbar2.style.display = 'flex';
+         navbar2.classList.remove('hidden');
+         navbar2.classList.add('show');
       }
 
       function hideNavbar2() {
-         navbar2.style.display = 'none';
+         navbar2.classList.remove('show');
+         navbar2.classList.add('hidden');
       }
-</script
    </script>
 </header>

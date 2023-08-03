@@ -48,7 +48,7 @@ if(isset($_GET['delete_all'])){
 
 <section class="products">
 
-   <h3 class="heading">your wishlist</h3>
+   <h3 class="heading">Yêu Thích</h3>
 
    <div class="box-container">
 
@@ -70,24 +70,24 @@ if(isset($_GET['delete_all'])){
       <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="">
       <div class="name"><?= $fetch_wishlist['name']; ?></div>
       <div class="flex">
-         <div class="price">$<?= $fetch_wishlist['price']; ?>/-</div>
+         <div class="price"><?= $fetch_wishlist['price']; ?>VNĐ</div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart">
-      <input type="submit" value="delete item" onclick="return confirm('delete this from wishlist?');" class="delete-btn" name="delete">
+      <input type="submit" value="Thêm Vào Giỏ Hàng" class="btn" name="add_to_cart">
+      <input type="submit" value="Xóa Mặt Hàng" onclick="return confirm('delete this from wishlist?');" class="delete-btn" name="delete">
    </form>
    <?php
       }
    }else{
-      echo '<p class="empty">your wishlist is empty</p>';
-   }
+      echo '<p class="empty">Danh Sách Yêu Thích Trống</p>';
+   } 
    ?>
    </div>
 
    <div class="wishlist-total">
-      <p>grand total : <span>$<?= $grand_total; ?>/-</span></p>
-      <a href="shop.php" class="option-btn">continue shopping</a>
-      <a href="wishlist.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from wishlist?');">delete all item</a>
+      <p>Tổng Tiền : <span><?= $grand_total; ?>VNĐ</span></p>
+      <a href="shop.php" class="option-btn">Tiếp Tục Mua Hàng</a>
+      <a href="wishlist.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from wishlist?');">Xóa Tất Cả Sản Phẩm</a>
    </div>
 
 </section>
