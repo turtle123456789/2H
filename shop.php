@@ -37,9 +37,9 @@ include 'components/wishlist_cart.php';
 
    <h1 class="heading">Danh Mục Sản Phẩm</h1>
    <div class="filter-price">
-      <span>100 $</span>
+      <span>1000 đ</span>
       <input type="range" id="priceRange" name="priceRange" min="100" max="10000" step="100" value="50000">
-      <span id="priceLabel">10,000 $</span>
+      <span id="priceLabel">100,000,000 đ</span>
    </div>
    <button id="filterButton" style="text-aline=center">Lọc</button>
    <div class="box-container">

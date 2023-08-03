@@ -158,7 +158,7 @@ if(isset($_GET['delete'])){
          </div>
          <div class="inputBox">
             <span>Tag (required)</span>
-            <textarea name="details" placeholder="Relevant Tag" class="box" required maxlength="500" cols="30" rows="10"></textarea>
+            <textarea name="tag" placeholder="Relevant Tag" class="box" required maxlength="500" cols="30" rows="10"></textarea>
          </div>
       </div>
       

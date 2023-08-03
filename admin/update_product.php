@@ -25,13 +25,13 @@ if(isset($_POST['update'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $tag = $_POST['tag'];
    $tag = filter_var($tag, FILTER_SANITIZE_STRING);
-   $original_price = $_POST['original_price'];
-   $original_price = filter_var($price, FILTER_SANITIZE_STRING);
+   /*$original_price = $_POST['original_price'];
+   $original_price = filter_var($price, FILTER_SANITIZE_STRING);*/
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
 
-   $update_product = $conn->prepare("UPDATE `products` SET name = ?, brand = ?, quantity = ?, origin = ?, original_price = ?, price = ?, details = ?, tag = ? WHERE id = ?");
-   $update_product->execute([$name, $brand, $quantity, $origin, $original_price, $price, $details, $tag, $pid]);
+   $update_product = $conn->prepare("UPDATE `products` SET name = ?, brand = ?, quantity = ?, origin = ?, price = ?, details = ?, tag = ? WHERE id = ?");
+   $update_product->execute([$name, $brand, $quantity, $origin, $price, $details, $tag, $pid]);
 
    $message[] = 'product updated successfully!';
 
@@ -146,19 +146,13 @@ if(isset($_POST['update'])){
       <span>update origin</span>
       <input type="text" name="origin" required class="box" maxlength="100" placeholder="enter product origin" value="<?= $fetch_products['origin']; ?>">
       <span>update quantity</span>
-      <input type="number" name="quantity" required class="box" min="0" max="100000" placeholder="enter product quantity" value="<?= $fetch_products['quantity']; ?>">
+      <input type="number" name="quantity" required class="box" min="0" max="10000" placeholder="enter product quantity" value="<?= $fetch_products['quantity']; ?>">
       <span>update price</span>
-<<<<<<< HEAD
-      <input type="number" name="price" required class="box" min="0" max="100000" placeholder="enter product price" onkeypress="if(this.value.length == 6) return false;" value="<?= $fetch_products['price']; ?>">
-=======
-      <input type="number" name="price" required class="box" min="0" max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" value="<?= $fetch_products['price']; ?>">
-      <span>update original price</span>
-      <input type="number" name="original_price" required class="box" min="0" max="9999999999" placeholder="enter ori product price" onkeypress="if(this.value.length == 10) return false;" value="<?= $fetch_products['original_price']; ?>">
->>>>>>> 188cdd13b48186f03238f0b5f1d5c04998aac91d
+      <input type="number" name="price" required class="box" min="0" max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 6) return false;" value="<?= $fetch_products['price']; ?>">
       <span>update details</span>
       <textarea name="details" class="box" required cols="30" rows="10"><?= $fetch_products['details']; ?></textarea>
       <span>update tag</span>
-      <textarea name="details" class="box" required cols="30" rows="10"><?= $fetch_products['tag']; ?></textarea>
+      <textarea name="tag" class="box" required cols="30" rows="10"><?= $fetch_products['tag']; ?></textarea>
       <span>update image 01</span>
       <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box">
       <span>update image 02</span>
