@@ -31,7 +31,7 @@ if(isset($_POST['send'])){
       $insert_message = $conn->prepare("INSERT INTO `messages`(user_id, name, email, number, message) VALUES(?,?,?,?,?)");
       $insert_message->execute([$user_id, $name, $email, $number, $msg]);
 
-      $message[] = 'sent message successfully!';
+      $message[] = 'Gởi Tin Nhắn Thành Công!';
 
    }
 
@@ -62,12 +62,12 @@ if(isset($_POST['send'])){
 <section class="contact">
 
    <form action="" method="post">
-      <h3>get in touch</h3>
-      <input type="text" name="name" placeholder="enter your name" required maxlength="20" class="box">
-      <input type="email" name="email" placeholder="enter your email" required maxlength="50" class="box">
-      <input type="number" name="number" min="0" max="9999999999" placeholder="enter your number" required onkeypress="if(this.value.length == 10) return false;" class="box">
-      <textarea name="msg" class="box" placeholder="enter your message" cols="30" rows="10"></textarea>
-      <input type="submit" value="send message" name="send" class="btn">
+      <h3>Liên Lạc</h3>
+      <input type="text" name="name" placeholder="Nhập Tên..." required maxlength="20" class="box">
+      <input type="email" name="email" placeholder="Nhập Email..." required maxlength="50" class="box">
+      <input type="number" name="number" min="0" max="9999999999" placeholder="Nhập Số Điện Thoại..." required onkeypress="if(this.value.length == 10) return false;" class="box">
+      <textarea name="msg" class="box" placeholder="Nhập Tin Nhắn..." cols="30" rows="10"></textarea>
+      <input type="submit" value="Gửi" name="send" class="btn">
    </form>
 
 </section>

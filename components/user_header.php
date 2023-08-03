@@ -50,19 +50,19 @@
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
          <p><?= $fetch_profile["name"]; ?></p>
-         <a href="update_user.php" class="btn">update profile</a>
+         <a href="update_user.php" class="btn">Cập Nhập Hồ Sơ</a>
          <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">register</a>
-            <a href="user_login.php" class="option-btn">login</a>
+            <a href="user_register.php" class="option-btn" style="padding:10px 10px">Đăng Ký</a>
+            <a href="user_login.php" class="option-btn"style="padding:10px 10px">Đăng Nhập</a>
          </div>
-         <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
+         <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('Bạn Muốn Đăng Xuất?');">Đăng Xuất</a> 
          <?php
             }else{
          ?>
-         <p>please login or register first!</p>
+         <p>Vui Lòng Đăng Nhập Hoặc Đăng Ký Trước!</p>
          <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">register</a>
-            <a href="user_login.php" class="option-btn">login</a>
+            <a href="user_register.php" class="option-btn">Đăng Kí</a>
+            <a href="user_login.php" class="option-btn">Đăng Nhập</a>
          </div>
          <?php
             }

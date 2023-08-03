@@ -26,14 +26,14 @@ if(isset($_POST['submit'])){
    $row = $select_user->fetch(PDO::FETCH_ASSOC);
 
    if($select_user->rowCount() > 0){
-      $message[] = 'email already exists!';
+      $message[] = 'Email Đã Tồn Tại!';
    }else{
       if($pass != $cpass){
-         $message[] = 'confirm password not matched!';
+         $message[] = 'Mật Khẩu Không Đúng!';
       }else{
          $insert_user = $conn->prepare("INSERT INTO `users`(name, email, password) VALUES(?,?,?)");
          $insert_user->execute([$name, $email, $cpass]);
-         $message[] = 'registered successfully, login now please!';
+         $message[] = 'Đăng Kí Thành Công, Đăng Nhập Ngay!';
       }
    }
 
@@ -63,14 +63,14 @@ if(isset($_POST['submit'])){
 <section class="form-container">
 
    <form action="" method="post">
-      <h3>register now</h3>
-      <input type="text" name="name" required placeholder="enter your username" maxlength="20"  class="box">
-      <input type="email" name="email" required placeholder="enter your email" maxlength="50"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-      <input type="password" name="pass" required placeholder="enter your password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-      <input type="password" name="cpass" required placeholder="confirm your password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-      <input type="submit" value="register now" class="btn" name="submit">
-      <p>already have an account?</p>
-      <a href="user_login.php" class="option-btn">login now</a>
+      <h3>Đăng Ký Ngay</h3>
+      <input type="text" name="name" required placeholder="Nhập Tên Người Dùng..." maxlength="20"  class="box">
+      <input type="email" name="email" required placeholder="Nhập Email..." maxlength="50"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="password" name="pass" required placeholder="Nhập Mật Khẩu" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="password" name="cpass" required placeholder="Xác Nhận Mật Khẩu..." maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="submit" value="Đăng Ký Ngay" class="btn" name="submit">
+      <p>Bạn Có Muốn Đăng Ký Tài Khoản?</p>
+      <a href="user_login.php" class="option-btn">Đăng Nhập Ngay</a>
    </form>
 
 </section>
