@@ -47,7 +47,7 @@ if(isset($_GET['delete'])){
 
 <section class="orders">
 
-<h1 class="heading">placed orders</h1>
+<h1 class="heading">Đơn hàng hiện có</h1>
 
 <div class="box-container">
 
